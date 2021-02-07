@@ -10,30 +10,30 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('signup')
-  signup(
+  async signup(
     @Body() request: ISignupRequestBody,
     @Res({ passthrough: true }) response: Response,
-  ): IResponce {
-    const error = this.authService.signup(request);
+  ): Promise<IResponce> {
+    const error = await this.authService.signup(request);
 
     if (error) {
-      response.status(HttpStatus.BAD_REQUEST);
-      return { ok: false, ...error };
+      response.status(error.status || HttpStatus.BAD_REQUEST);
+      return { ok: false, message: error.message };
     }
 
     return { ok: true };
   }
 
   @Post('signin')
-  signin(
+  async signin(
     @Body() request: IUserCredentials,
     @Res({ passthrough: true }) response: Response,
-  ): IResponce {
-    const error = this.authService.signin(request);
+  ): Promise<IResponce> {
+    const error = await this.authService.signin(request);
 
     if (error) {
-      response.status(HttpStatus.BAD_REQUEST);
-      return { ok: false, ...error };
+      response.status(error.status || HttpStatus.BAD_REQUEST);
+      return { ok: false, message: error.message };
     }
 
     return { ok: true };
