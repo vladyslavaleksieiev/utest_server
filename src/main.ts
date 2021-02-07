@@ -1,7 +1,6 @@
 import { setupDatabase } from '@database/setup';
+import { AppModule } from '@modules/app';
 import { NestFactory } from '@nestjs/core';
-
-import { AppModule } from './app.module';
 
 async function bootstrap() {
   setupDatabase();

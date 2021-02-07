@@ -12,7 +12,9 @@
     "baseUrl": "./src",
     "incremental": true,
     "paths": {
-      "@database/*": ["database/*"]
+      "@database/*": ["database/*"],
+      "@modules/*": ["modules/*"],
+      "@utils/*": ["utils/*"]
     }
   }
 }
