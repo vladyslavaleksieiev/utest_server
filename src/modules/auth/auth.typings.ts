@@ -13,3 +13,7 @@ export interface ISignupRequestBody extends IUserCredentials {
 
   role: TRoles;
 }
+
+export interface ISigninResponse extends IResponse {
+  jwt?: string;
+}

@@ -1,7 +1,10 @@
 import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { createToken } from '@utils/encryption';
 import { Response } from 'express';
 
-import { ISignupRequestBody, IUserCredentials } from './auth.typings';
+import {
+  ISigninResponse, ISignupRequestBody, IUserCredentials
+} from './auth.typings';
 
 import { AuthService } from './auth.service';
 
@@ -13,7 +16,7 @@ export class AuthController {
   async signup(
     @Body() request: ISignupRequestBody,
     @Res({ passthrough: true }) response: Response,
-  ): Promise<IResponce> {
+  ): Promise<IResponse> {
     const error = await this.authService.signup(request);
 
     if (error) {
@@ -28,7 +31,7 @@ export class AuthController {
   async signin(
     @Body() request: IUserCredentials,
     @Res({ passthrough: true }) response: Response,
-  ): Promise<IResponce> {
+  ): Promise<ISigninResponse> {
     const error = await this.authService.signin(request);
 
     if (error) {
@@ -36,6 +39,6 @@ export class AuthController {
       return { ok: false, message: error.message };
     }
 
-    return { ok: true };
+    return { ok: true, jwt: createToken(request.email) };
   }
 }

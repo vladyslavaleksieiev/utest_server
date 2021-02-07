@@ -3,6 +3,6 @@ interface IError {
   status?: number;
 }
 
-interface IResponce extends IError {
+interface IResponse extends IError {
   ok: boolean;
 }
