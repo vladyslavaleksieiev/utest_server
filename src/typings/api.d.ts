@@ -6,3 +6,7 @@ interface IError {
 interface IResponse extends IError {
   ok: boolean;
 }
+
+interface IData<T> extends IResponse {
+  data?: T;
+}

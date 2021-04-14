@@ -10,6 +10,6 @@ export const setupDatabase = async (): Promise<void> => {
     });
     console.log('DB CONNECTED');
   } catch (e) {
-    console.log('DB CONNECTION ERROR ', e);
+    console.error('DB CONNECTION ERROR ', e);
   }
 };

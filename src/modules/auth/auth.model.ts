@@ -1,6 +1,7 @@
 import { encrypt } from '@utils/encryption';
+import { Schema } from 'mongoose';
 
-import { User } from './auth.shema';
+import { User } from './auth.schema';
 
 import { ISignupRequestBody, IUserCredentials } from './auth.typings';
 
@@ -41,5 +42,13 @@ export class AuthModel {
 
   private static async findOne(email: string): Promise<boolean> {
     return (await User.findOne({ email })) !== null;
+  }
+
+  public static async findId(email: string): Promise<Schema.Types.ObjectId> {
+    const user = await User.findOne({ email });
+
+    if (user) {
+      return user.id;
+    }
   }
 }
