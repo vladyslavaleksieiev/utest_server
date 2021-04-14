@@ -6,7 +6,6 @@ const schema = new Schema({
 
   email: { type: String, unique: true },
   password: String,
-  role: String,
 });
 
 export const User = model('User', schema);

@@ -1,8 +1,6 @@
 import { validateString } from '@utils/validatation';
 
-import {
-  EMAIL_REGEXP, NAME_REGEXP, PASSWORD_REGEXP, ROLES
-} from './auth.constants';
+import { EMAIL_REGEXP, NAME_REGEXP, PASSWORD_REGEXP } from './auth.constants';
 
 import { ISignupRequestBody, IUserCredentials } from './auth.typings';
 
@@ -43,10 +41,6 @@ export class AuthValidator {
     const lastName = validateString(signup.lastName, NAME_REGEXP, 'lastName');
     if (lastName) {
       return lastName;
-    }
-
-    if (!ROLES.includes(signup.role)) {
-      return { message: 'role should be chousen' };
     }
   }
 }

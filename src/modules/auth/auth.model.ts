@@ -35,7 +35,6 @@ export class AuthModel {
       lastName: request.lastName,
       email: request.email,
       password,
-      role: request.role,
     });
     await user.save();
   }

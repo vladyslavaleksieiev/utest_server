@@ -3,5 +3,3 @@ export const EMAIL_REGEXP = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+
 export const PASSWORD_REGEXP = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$/;
 
 export const NAME_REGEXP = /^([a-zA-Z]{3,16})$/;
-
-export const ROLES = ['user', 'admin'] as const;
